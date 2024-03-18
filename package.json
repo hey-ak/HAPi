@@ -1,0 +1,7 @@
+{
+	"name": "nodejs-online-compiler",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"command": "start"
+}
