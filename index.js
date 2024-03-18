@@ -1,31 +1,32 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.post('/bfhl', (req, res) => {
-    const inputArray = req.body.array;
+const arr = req.body.data;
+console.log(arr);
 
-    const evenNumbers = inputArray.filter(num => num % 2 === 0);
-    const oddNumbers = inputArray.filter(num => num % 2 !== 0);
-    const alphabetsUpperCase = inputArray.filter(char => /[a-zA-Z]/.test(char)).map(char => char.toUpperCase());
+const user = "akshayjha_2110990127";
 
-    const user_id = "john_doe_17091999";
+const alpha = arr.filter(ch => /[a-zA-Z]/.test(ch)).map(ch => ch.toUpperCase());
+const oddArr = arr.filter(item => item % 2 !== 0);
+const evenArr = arr.filter(item => item % 2 === 0);
 
-    const response = {
-        user_id: user_id,
-        is_success: true,
-        even_numbers: evenNumbers,
-        odd_numbers: oddNumbers,
-        alphabets_uppercase: alphabetsUpperCase
-    };
 
-    res.json(response);
+
+const resp = {
+    user_id: user,
+    is_success: true,
+    even_numbers: evenArr,
+    odd_numbers: oddArr,
+    alphabets_uppercase: alpha
+};
+
+res.json(resp);
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+console.log(`Server running on port ${port}`);
 });
